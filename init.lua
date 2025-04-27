@@ -1,6 +1,3 @@
--- Set termguicolors to enable true color support
-vim.opt.termguicolors = true
-
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -14,6 +11,12 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
+
+-- Set termguicolors to enable true color support
+vim.opt.termguicolors = true
+
+-- Turn on 'relative' line numbers
+vim.opt.relativenumber = true
 
 -- Set up leader key before loading plugins
 vim.g.mapleader = " "
