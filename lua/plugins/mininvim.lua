@@ -40,6 +40,41 @@ return {
         },
       })
 
+      -- Setup mini.completion
+      require('mini.completion').setup({
+        -- Delay (in ms) between text modification and completion popup show
+        delay = { completion = 100 },
+        
+        -- Configuration for popup window
+        window = {
+          info = { height = 25, width = 80, border = 'single' },
+          signature = { height = 25, width = 80, border = 'single' },
+        },
+
+        -- Sources for completion. Default: all LSP + buffer
+        lsp_completion = {
+          source_func = 'omnifunc',
+          auto_setup = true,
+          process_items = function(items, base)
+            -- Show up to 10 completion items
+            return vim.list_slice(items, 1, 10)
+          end
+        },
+
+        -- Additional sources for completion
+        fallback_sources = {
+          { name = 'path' },        -- File system paths
+          { name = 'ctags' },       -- Tags from ctags
+          { name = 'buffer' },      -- Current buffer words
+        },
+
+        -- Characters that trigger completion
+        mappings = {
+          force_twostep = '<C-Space>',  -- Force two-step completion
+          force_fallback = '<A-Space>',  -- Force fallback completion
+        }
+      })
+
       -- nvim color scheme; your nvim theme!
       require('mini.base16').setup({
         palette = {
