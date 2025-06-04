@@ -18,6 +18,10 @@ vim.opt.termguicolors = true
 -- Turn on 'relative' line numbers
 vim.opt.relativenumber = true
 
+-- Disable treesitter to avoid parser errors
+vim.g.loaded_treesitter = 1
+vim.cmd([[syntax enable]])
+
 -- Set up leader key before loading plugins
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
