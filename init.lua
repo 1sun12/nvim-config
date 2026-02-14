@@ -1,4 +1,20 @@
--- Bootstrap lazy.nvim
+-- Neovim Configuration
+-- Location: ~/.config/nvim/init.lua
+
+-- Basic Settings
+vim.opt.number = true           -- Show line numbers
+vim.opt.relativenumber = true   -- Show relative line numbers
+vim.opt.expandtab = true        -- Use spaces instead of tabs
+vim.opt.shiftwidth = 2          -- Size of an indent
+vim.opt.tabstop = 4             -- Number of spaces tabs count for
+vim.opt.smartindent = true      -- Insert indents automatically
+vim.opt.termguicolors = true    -- True color support
+vim.opt.mouse = 'a'             -- Enable mouse mode
+vim.opt.clipboard = 'unnamedplus' -- Sync with system clipboard
+
+-- Plugin Manager Setup (lazy.nvim)
+-- Uncomment below to install lazy.nvim plugin manager
+--[[
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -6,21 +22,20 @@ if not vim.loop.fs_stat(lazypath) then
     "clone",
     "--filter=blob:none",
     "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
+    "--branch=stable",
     lazypath,
   })
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Set termguicolors to enable true color support
-vim.opt.termguicolors = true
+-- Plugin specifications
+require("lazy").setup({
+  -- Add your plugins here
+  -- Example: { "folke/tokyonight.nvim" },
+})
+--]]
 
--- Turn on 'relative' line numbers
-vim.opt.relativenumber = true
+-- Custom keymaps
+vim.g.mapleader = ' '           -- Set leader key to space
 
--- Set up leader key before loading plugins
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
-
--- Load plugins from the plugins directory
-require("lazy").setup("plugins")
+-- Add your custom configurations below
