@@ -25,4 +25,4 @@ vim.cmd('colorscheme elflord')
 
 -- Built-in completion settings
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
-vim.opt.complete = { '.', 'w', 'b', 'u' }
+vim.opt.complete = { '.', 'w', 'b', 'u', 'k'}
